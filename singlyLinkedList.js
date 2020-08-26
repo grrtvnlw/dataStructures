@@ -1,5 +1,4 @@
 // implementation of a Singly Linked List
-
 class Node {
   constructor(val) {
     this.val = val;
@@ -64,10 +63,30 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter != index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
-// initializing an interface
+// initializing an a singly linked list interface
 let list = new SinglyLinkedList()
 list.push('hello')
 list.push('goodbye')
 list.push('!')
+list.push('<3')
+list.push(':)')
