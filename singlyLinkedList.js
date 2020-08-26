@@ -26,6 +26,7 @@ class SinglyLinkedList {
   }
   pop() {
     if (!this.head) return undefined;
+
     var current = this.head;
     var newTail = current;
     while (current.next) {
@@ -43,6 +44,7 @@ class SinglyLinkedList {
   }
   shift() {
     if (!this.head) return undefined;
+
     var currentHead = this.head;
     this.head = currentHead.next;
     this.length--;
@@ -65,6 +67,7 @@ class SinglyLinkedList {
   }
   get(index) {
     if (index < 0 || index >= this.length) return null;
+
     let counter = 0;
     let current = this.head;
     while (counter != index) {
@@ -105,16 +108,31 @@ class SinglyLinkedList {
     this.length--;
     return removed;
   }
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
+  print() {
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.val)
+      current = current.next
+    }
+    console.log(arr)
+  }
 }
 
 // initializing an a singly linked list interface
 let list = new SinglyLinkedList()
-list.push(100);
-list.push(201);
-list.push(250);
-list.push(350);
-// list.push('hello')
-// list.push('goodbye')
-// list.push('!')
-// list.push('<3')
-// list.push(':)')
