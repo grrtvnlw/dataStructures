@@ -134,5 +134,5 @@ class SinglyLinkedList {
   }
 }
 
-// initializing an a singly linked list interface
+// initializing a singly linked list interface
 let list = new SinglyLinkedList()
