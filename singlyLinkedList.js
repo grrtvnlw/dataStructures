@@ -81,12 +81,40 @@ class SinglyLinkedList {
     }
     return false;
   }
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+
+    let newNode = new Node(val);
+    let prev = this.get(index - 1);
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    let previousNode = this.get(index - 1);
+    let removed = previousNode.next;
+    previousNode.next = removed.next;
+    this.length--;
+    return removed;
+  }
 }
 
 // initializing an a singly linked list interface
 let list = new SinglyLinkedList()
-list.push('hello')
-list.push('goodbye')
-list.push('!')
-list.push('<3')
-list.push(':)')
+list.push(100);
+list.push(201);
+list.push(250);
+list.push(350);
+// list.push('hello')
+// list.push('goodbye')
+// list.push('!')
+// list.push('<3')
+// list.push(':)')
