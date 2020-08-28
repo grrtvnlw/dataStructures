@@ -131,7 +131,5 @@ class DoublyLinkedList {
   }
 }
 
+// initializing a doubly linked list interface
 let list = new DoublyLinkedList()
-list.push("Harry")
-list.push("Ron")
-list.push("Hermione")
